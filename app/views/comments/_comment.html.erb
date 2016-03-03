@@ -1,0 +1,12 @@
+<p>
+	<strong>Comment Name:</strong>
+	<%= comment.name %>
+</p>
+<p>
+	<%= comment.body %>
+</p>
+
+<%= link_to "destroy", [comment.post, comment], 
+						method: :delete, 
+						data: { confirm: "Are you sure, you want to delete the comment?" } 
+						%>

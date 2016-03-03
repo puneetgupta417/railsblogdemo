@@ -1,0 +1,27 @@
+<h1> Show Post <%= params[:id] %></h1>
+
+<p>
+	<h3>
+		<%= @post.title %>
+	</h3>
+</p>
+<p>
+	<%= @post.body %>
+</p>
+
+<%= link_to "edit", edit_post_path(@post) %> | <%= link_to "destroy", post_path(@post), method: :delete, data: {confirm: "Are you sure you want to delete this post?"} %>
+
+<br/>
+
+<%= render @post.comments.order("created_at DESC") %>
+
+<p> Leave a comment </p>
+<%= form_for [@post, @post.comments.build] do |f| %>
+	<%= f.label :name %><br/>
+	<%= f.text_field :name %>
+	<br/>
+	<%= f.label :body %><br/>
+	<%= f.text_area :body %><br/>
+	<%= f.submit %>
+
+<% end %>
